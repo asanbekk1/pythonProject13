@@ -10,3 +10,4 @@ urlpatterns = [
     path('reviews/<int:pk>/', views.ReviewDetail.as_view(), name='review-detail'),
     path('movies/reviews/', views.MovieReviewsList.as_view(), name='movie-reviews-list'),
 ]
+
