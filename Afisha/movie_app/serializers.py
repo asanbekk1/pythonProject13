@@ -1,10 +1,17 @@
 from rest_framework import serializers
+from django.db.models import Avg, Count
 from .models import Director, Movie, Review
 
 class DirectorSerializer(serializers.ModelSerializer):
+    movies_count = serializers.SerializerMethodField()  # Добавляем movies_count как вычисляемое поле
+
     class Meta:
         model = Director
         fields = ['id', 'name', 'movies_count']
+
+    def get_movies_count(self, obj):
+        # Возвращаем количество фильмов, связанных с режиссером
+        return obj.movies.count()
 
     def validate_name(self, value):
         if len(value) < 2:

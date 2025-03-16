@@ -11,11 +11,11 @@ from .serializers import (
 
 # Режиссеры
 class DirectorList(generics.ListCreateAPIView):
-    queryset = Director.objects.annotate(movies_count=Count('movies'))
+    queryset = Director.objects.annotate(movies_count=Count('movies'))  # Аннотация для movies_count
     serializer_class = DirectorSerializer
 
 class DirectorDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Director.objects.annotate(movies_count=Count('movies'))
+    queryset = Director.objects.annotate(movies_count=Count('movies'))  # Аннотация для movies_count
     serializer_class = DirectorSerializer
 
 # Фильмы
